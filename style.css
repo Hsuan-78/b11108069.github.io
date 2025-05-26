@@ -1,0 +1,258 @@
+
+/* 基礎設置 */
+:root {
+    --primary-color: #6292bc;
+    --secondary-color: #7b7fbc;
+    --accent-color: #d067b4;
+    --text-color: #444;
+    --bg-gradient: linear-gradient(to right, #f3e6f7, #d6c6e5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DFKai-SB', '標楷體', serif;
+    line-height: 1.6;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header 樣式 */
+header {
+    font-size: 1rem;
+    background: var(--primary-color);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 2rem;
+    height: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* 主要區域樣式 */
+.hero-section {
+    padding-top: 80px;
+}
+
+#about {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+/* profile 區塊：橫向排列＋動畫＋置中名字與標籤 */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    animation: fadeIn 1s ease-in-out;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-left, .profile-right {
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.profile-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    animation: slideInLeft 1s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.profile-picture img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.profile-right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: slideInRight 1s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.name-department h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.name-department p {
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.keywords {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.keyword {
+    display: inline-block;
+    font-size: 1.5rem;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.keyword:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* 作品集區域 */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    width: 100%;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* 聯絡方式區域 */
+#contact {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+#contact i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+/* 手機版：垂直排列 profile 區塊 */
+@media (max-width: 768px) {
+    .project-card {
+        flex: 0 1 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-right {
+        align-items: center;
+        text-align: center;
+    }
+
+    .keywords {
+        justify-content: center;
+    }
+}
+
+/* 動畫定義 */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
